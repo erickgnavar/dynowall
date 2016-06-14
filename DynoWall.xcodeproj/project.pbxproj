@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A7242C231D0881C5000787EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7242C221D0881C5000787EE /* AppDelegate.swift */; };
+		A7242C251D0881C5000787EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7242C241D0881C5000787EE /* Assets.xcassets */; };
+		A7242C281D0881C5000787EE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7242C261D0881C5000787EE /* MainMenu.xib */; };
+		A7242C331D0881C5000787EE /* DynoWallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7242C321D0881C5000787EE /* DynoWallTests.swift */; };
+		A7242C3E1D0881C6000787EE /* DynoWallUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7242C3D1D0881C6000787EE /* DynoWallUITests.swift */; };
+		A7CC73241D08848A00F9876E /* UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CC73231D08848A00F9876E /* UnsplashAPI.swift */; };
+		A7CC73261D0885A300F9876E /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CC73251D0885A300F9876E /* StatusMenuController.swift */; };
+		A7CC73291D088CE900F9876E /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CC73271D088CE900F9876E /* PreferencesWindow.swift */; };
+		A7CC732A1D088CE900F9876E /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7CC73281D088CE900F9876E /* PreferencesWindow.xib */; };
+		A7CC732C1D0A09FF00F9876E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CC732B1D0A09FF00F9876E /* Constants.swift */; };
+		A7CC73301D0A1C9600F9876E /* OSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CC732F1D0A1C9600F9876E /* OSManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A7242C2F1D0881C5000787EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7242C171D0881C5000787EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7242C1E1D0881C5000787EE;
+			remoteInfo = DynoWall;
+		};
+		A7242C3A1D0881C6000787EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7242C171D0881C5000787EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7242C1E1D0881C5000787EE;
+			remoteInfo = DynoWall;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A7242C1F1D0881C5000787EE /* DynoWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynoWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7242C221D0881C5000787EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A7242C241D0881C5000787EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A7242C271D0881C5000787EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A7242C291D0881C5000787EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7242C2E1D0881C5000787EE /* DynoWallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DynoWallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7242C321D0881C5000787EE /* DynoWallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynoWallTests.swift; sourceTree = "<group>"; };
+		A7242C341D0881C5000787EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7242C391D0881C6000787EE /* DynoWallUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DynoWallUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7242C3D1D0881C6000787EE /* DynoWallUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynoWallUITests.swift; sourceTree = "<group>"; };
+		A7242C3F1D0881C6000787EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7CC73231D08848A00F9876E /* UnsplashAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashAPI.swift; sourceTree = "<group>"; };
+		A7CC73251D0885A300F9876E /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+		A7CC73271D088CE900F9876E /* PreferencesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesWindow.swift; path = ../PreferencesWindow.swift; sourceTree = "<group>"; };
+		A7CC73281D088CE900F9876E /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindow.xib; path = ../PreferencesWindow.xib; sourceTree = "<group>"; };
+		A7CC732B1D0A09FF00F9876E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A7CC732F1D0A1C9600F9876E /* OSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A7242C1C1D0881C5000787EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7242C2B1D0881C5000787EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7242C361D0881C6000787EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A7242C161D0881C5000787EE = {
+			isa = PBXGroup;
+			children = (
+				A7242C211D0881C5000787EE /* DynoWall */,
+				A7242C311D0881C5000787EE /* DynoWallTests */,
+				A7242C3C1D0881C6000787EE /* DynoWallUITests */,
+				A7242C201D0881C5000787EE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A7242C201D0881C5000787EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A7242C1F1D0881C5000787EE /* DynoWall.app */,
+				A7242C2E1D0881C5000787EE /* DynoWallTests.xctest */,
+				A7242C391D0881C6000787EE /* DynoWallUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A7242C211D0881C5000787EE /* DynoWall */ = {
+			isa = PBXGroup;
+			children = (
+				A7CC73271D088CE900F9876E /* PreferencesWindow.swift */,
+				A7CC73281D088CE900F9876E /* PreferencesWindow.xib */,
+				A7242C221D0881C5000787EE /* AppDelegate.swift */,
+				A7242C241D0881C5000787EE /* Assets.xcassets */,
+				A7242C261D0881C5000787EE /* MainMenu.xib */,
+				A7242C291D0881C5000787EE /* Info.plist */,
+				A7CC73231D08848A00F9876E /* UnsplashAPI.swift */,
+				A7CC73251D0885A300F9876E /* StatusMenuController.swift */,
+				A7CC732B1D0A09FF00F9876E /* Constants.swift */,
+				A7CC732F1D0A1C9600F9876E /* OSManager.swift */,
+			);
+			path = DynoWall;
+			sourceTree = "<group>";
+		};
+		A7242C311D0881C5000787EE /* DynoWallTests */ = {
+			isa = PBXGroup;
+			children = (
+				A7242C321D0881C5000787EE /* DynoWallTests.swift */,
+				A7242C341D0881C5000787EE /* Info.plist */,
+			);
+			path = DynoWallTests;
+			sourceTree = "<group>";
+		};
+		A7242C3C1D0881C6000787EE /* DynoWallUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A7242C3D1D0881C6000787EE /* DynoWallUITests.swift */,
+				A7242C3F1D0881C6000787EE /* Info.plist */,
+			);
+			path = DynoWallUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A7242C1E1D0881C5000787EE /* DynoWall */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7242C421D0881C6000787EE /* Build configuration list for PBXNativeTarget "DynoWall" */;
+			buildPhases = (
+				A7242C1B1D0881C5000787EE /* Sources */,
+				A7242C1C1D0881C5000787EE /* Frameworks */,
+				A7242C1D1D0881C5000787EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DynoWall;
+			productName = DynoWall;
+			productReference = A7242C1F1D0881C5000787EE /* DynoWall.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A7242C2D1D0881C5000787EE /* DynoWallTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7242C451D0881C6000787EE /* Build configuration list for PBXNativeTarget "DynoWallTests" */;
+			buildPhases = (
+				A7242C2A1D0881C5000787EE /* Sources */,
+				A7242C2B1D0881C5000787EE /* Frameworks */,
+				A7242C2C1D0881C5000787EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7242C301D0881C5000787EE /* PBXTargetDependency */,
+			);
+			name = DynoWallTests;
+			productName = DynoWallTests;
+			productReference = A7242C2E1D0881C5000787EE /* DynoWallTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A7242C381D0881C6000787EE /* DynoWallUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7242C481D0881C6000787EE /* Build configuration list for PBXNativeTarget "DynoWallUITests" */;
+			buildPhases = (
+				A7242C351D0881C6000787EE /* Sources */,
+				A7242C361D0881C6000787EE /* Frameworks */,
+				A7242C371D0881C6000787EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7242C3B1D0881C6000787EE /* PBXTargetDependency */,
+			);
+			name = DynoWallUITests;
+			productName = DynoWallUITests;
+			productReference = A7242C391D0881C6000787EE /* DynoWallUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A7242C171D0881C5000787EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Erick Navarro";
+				TargetAttributes = {
+					A7242C1E1D0881C5000787EE = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					A7242C2D1D0881C5000787EE = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = A7242C1E1D0881C5000787EE;
+					};
+					A7242C381D0881C6000787EE = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = A7242C1E1D0881C5000787EE;
+					};
+				};
+			};
+			buildConfigurationList = A7242C1A1D0881C5000787EE /* Build configuration list for PBXProject "DynoWall" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A7242C161D0881C5000787EE;
+			productRefGroup = A7242C201D0881C5000787EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A7242C1E1D0881C5000787EE /* DynoWall */,
+				A7242C2D1D0881C5000787EE /* DynoWallTests */,
+				A7242C381D0881C6000787EE /* DynoWallUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A7242C1D1D0881C5000787EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7242C251D0881C5000787EE /* Assets.xcassets in Resources */,
+				A7CC732A1D088CE900F9876E /* PreferencesWindow.xib in Resources */,
+				A7242C281D0881C5000787EE /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7242C2C1D0881C5000787EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7242C371D0881C6000787EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A7242C1B1D0881C5000787EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7CC732C1D0A09FF00F9876E /* Constants.swift in Sources */,
+				A7CC73291D088CE900F9876E /* PreferencesWindow.swift in Sources */,
+				A7CC73261D0885A300F9876E /* StatusMenuController.swift in Sources */,
+				A7CC73241D08848A00F9876E /* UnsplashAPI.swift in Sources */,
+				A7242C231D0881C5000787EE /* AppDelegate.swift in Sources */,
+				A7CC73301D0A1C9600F9876E /* OSManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7242C2A1D0881C5000787EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7242C331D0881C5000787EE /* DynoWallTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7242C351D0881C6000787EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7242C3E1D0881C6000787EE /* DynoWallUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A7242C301D0881C5000787EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7242C1E1D0881C5000787EE /* DynoWall */;
+			targetProxy = A7242C2F1D0881C5000787EE /* PBXContainerItemProxy */;
+		};
+		A7242C3B1D0881C6000787EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7242C1E1D0881C5000787EE /* DynoWall */;
+			targetProxy = A7242C3A1D0881C6000787EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A7242C261D0881C5000787EE /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7242C271D0881C5000787EE /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A7242C401D0881C6000787EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A7242C411D0881C6000787EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A7242C431D0881C6000787EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DynoWall/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericknavarro.DynoWall;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A7242C441D0881C6000787EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DynoWall/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericknavarro.DynoWall;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A7242C461D0881C6000787EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DynoWallTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericknavarro.DynoWallTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DynoWall.app/Contents/MacOS/DynoWall";
+			};
+			name = Debug;
+		};
+		A7242C471D0881C6000787EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DynoWallTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericknavarro.DynoWallTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DynoWall.app/Contents/MacOS/DynoWall";
+			};
+			name = Release;
+		};
+		A7242C491D0881C6000787EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DynoWallUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericknavarro.DynoWallUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DynoWall;
+			};
+			name = Debug;
+		};
+		A7242C4A1D0881C6000787EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DynoWallUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ericknavarro.DynoWallUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DynoWall;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A7242C1A1D0881C5000787EE /* Build configuration list for PBXProject "DynoWall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7242C401D0881C6000787EE /* Debug */,
+				A7242C411D0881C6000787EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7242C421D0881C6000787EE /* Build configuration list for PBXNativeTarget "DynoWall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7242C431D0881C6000787EE /* Debug */,
+				A7242C441D0881C6000787EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7242C451D0881C6000787EE /* Build configuration list for PBXNativeTarget "DynoWallTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7242C461D0881C6000787EE /* Debug */,
+				A7242C471D0881C6000787EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7242C481D0881C6000787EE /* Build configuration list for PBXNativeTarget "DynoWallUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7242C491D0881C6000787EE /* Debug */,
+				A7242C4A1D0881C6000787EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A7242C171D0881C5000787EE /* Project object */;
+}
