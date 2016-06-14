@@ -1,0 +1,6 @@
+{
+  "name": "Dynowall",
+  "tagline": "Change OSX wallpaper with a random high quality picture from Unsplash",
+  "body": "# DynoWall\r\n\r\nChange OSX wallpaper with a random high quality picture from Unsplash\r\n\r\n# Screenshots\r\n\r\n![status-bar-options](screenshots/status-bar-options.png)\r\n\r\n![preferences](screenshots/preferences.png)\r\n\r\n# TODO\r\n- [ ] Add start at login support\r\n- [ ] Improve intervals schedule\r\n- [ ] Select folder where put downloaded images\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
