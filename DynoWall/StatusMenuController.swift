@@ -8,7 +8,12 @@
 
 import Cocoa
 
-class StatusMenuController: NSObject {
+protocol ImageProtocol: class {
+    func imageDidUpdate(image: Image)
+}
+
+
+class StatusMenuController: NSObject, ImageProtocol {
 
     @IBOutlet weak var statusMenu: NSMenu!
 
@@ -17,6 +22,7 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var every3HoursMenuItem: NSMenuItem!
     @IBOutlet weak var every6HoursMenuItem: NSMenuItem!
     @IBOutlet weak var every12HoursMenuItem: NSMenuItem!
+    @IBOutlet weak var imageDetails: NSMenuItem!
 
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
     var preferencesWindow: PreferencesWindow!
@@ -33,7 +39,26 @@ class StatusMenuController: NSObject {
         self.loadSavedData()
     }
 
+    @IBAction func openImagePage(sender: NSMenuItem) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let data = defaults.valueForKey(constants.keys.IMAGE) {
+            let image = Image.decode(data as! NSDictionary)
+            OSManager.openUrl(image.url)
+        } else {
+            NSLog("No image saved")
+        }
+    }
+    @IBAction func openAuthorProfilePage(sender: NSMenuItem) {
+        if let data = defaults.valueForKey(constants.keys.IMAGE) {
+            let image = Image.decode(data as! NSDictionary)
+            OSManager.openUrl(image.user.url)
+        } else {
+            NSLog("No image saved")
+        }
+    }
+
     @IBAction func changeWallpaperClicked(sender: NSMenuItem) {
+        api.delegate = self
         api.randomImage()
     }
 
@@ -51,7 +76,15 @@ class StatusMenuController: NSObject {
         NSApplication.sharedApplication().terminate(self)
     }
 
+    func imageDidUpdate(image: Image) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        // is not possible save directly a struct in user preferences
+        defaults.setValue(image.dict, forKey: constants.keys.IMAGE)
+        imageDetails.title = "Photo by \(image.user.name)"
+    }
+
     func loadSavedData() {
+        // Setup interval from user preferences
         if let interval = defaults.stringForKey(constants.keys.INTERVAL) {
             disableAllIntervalItems()
             switch Int(interval)! {
@@ -70,6 +103,16 @@ class StatusMenuController: NSObject {
             }
         } else {
             defaults.setInteger(constants.INTERVAL, forKey: constants.keys.INTERVAL)
+        }
+        // Setup photo data from user preferences
+        if let data = defaults.valueForKey(constants.keys.IMAGE) {
+            let image = Image.decode(data as! NSDictionary)
+            imageDetails.title = "Photo by \(image.user.name)"
+            imageDetails.hidden = false
+        } else {
+            // Hide menu item if no exists image data saved in user preferences
+            imageDetails.hidden = true
+            NSLog("No image saved")
         }
     }
 

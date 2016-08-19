@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -20,12 +20,33 @@
                 <outlet property="every3HoursMenuItem" destination="4Lb-ry-B27" id="DcO-vq-ZPe"/>
                 <outlet property="every6HoursMenuItem" destination="tn2-nB-VYD" id="HCu-8K-oOh"/>
                 <outlet property="everyHourMenuItem" destination="dHv-b4-dDQ" id="wPN-cL-63O"/>
+                <outlet property="imageDetails" destination="Dbp-5g-gPE" id="Y2s-ur-7eo"/>
                 <outlet property="neverMenuItem" destination="fJE-RZ-FqL" id="bek-6z-ese"/>
                 <outlet property="statusMenu" destination="kn9-t0-gW5" id="J0T-Oc-l4S"/>
             </connections>
         </customObject>
         <menu id="kn9-t0-gW5" userLabel="StatusMenu">
             <items>
+                <menuItem title="Photo by" id="Dbp-5g-gPE">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Photo by" id="2ZG-rp-jJV">
+                        <items>
+                            <menuItem title="Open image page" id="R0C-1K-oyA">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openImagePage:" target="aUp-lE-Kax" id="pbu-Xz-z3K"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Open author profile page" id="YAe-k1-Zh8">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openAuthorProfilePage:" target="aUp-lE-Kax" id="TQr-ka-P4q"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="0AP-85-pSv"/>
                 <menuItem title="Change wallpaper" id="xTt-86-Ohm">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>

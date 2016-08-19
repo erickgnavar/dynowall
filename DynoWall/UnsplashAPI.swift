@@ -19,6 +19,8 @@ class UnsplashAPI: NSObject {
 
     typealias JSONDict = [String: AnyObject]
 
+    weak var delegate: ImageProtocol?
+
     func randomImage() {
         let defaults = NSUserDefaults.standardUserDefaults()
         var url = "/photos/random"
@@ -62,8 +64,14 @@ class UnsplashAPI: NSObject {
             case 200:
                 let json : JSONDict = self.parseData(data!)
                 let urls = json["urls"] as! JSONDict
+                let links = json["links"] as! JSONDict
+                let user = json["user"] as! JSONDict
+                let userLinks = user["links"] as! JSONDict
                 let id = json["id"] as! String
                 OSManager.setWallpaper(urls["full"] as! String, fileName: "\(id).jpg")
+                let image = Image(url: links["html"] as! String, user: User(name: user["name"] as! String, url: userLinks["html"] as! String))
+                delegate?.imageDidUpdate(image)
+                NSLog("Wallpaper changed!")
             case 401:
                 NSLog("unauthorized error")
             default:

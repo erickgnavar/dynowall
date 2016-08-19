@@ -12,6 +12,7 @@
 		A7242C281D0881C5000787EE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7242C261D0881C5000787EE /* MainMenu.xib */; };
 		A7242C331D0881C5000787EE /* DynoWallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7242C321D0881C5000787EE /* DynoWallTests.swift */; };
 		A7242C3E1D0881C6000787EE /* DynoWallUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7242C3D1D0881C6000787EE /* DynoWallUITests.swift */; };
+		A7316CBB1D66C3E5005BA5B2 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7316CBA1D66C3E5005BA5B2 /* Image.swift */; };
 		A7CC73241D08848A00F9876E /* UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CC73231D08848A00F9876E /* UnsplashAPI.swift */; };
 		A7CC73261D0885A300F9876E /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CC73251D0885A300F9876E /* StatusMenuController.swift */; };
 		A7CC73291D088CE900F9876E /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CC73271D088CE900F9876E /* PreferencesWindow.swift */; };
@@ -49,6 +50,7 @@
 		A7242C391D0881C6000787EE /* DynoWallUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DynoWallUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7242C3D1D0881C6000787EE /* DynoWallUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynoWallUITests.swift; sourceTree = "<group>"; };
 		A7242C3F1D0881C6000787EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7316CBA1D66C3E5005BA5B2 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		A7CC73231D08848A00F9876E /* UnsplashAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashAPI.swift; sourceTree = "<group>"; };
 		A7CC73251D0885A300F9876E /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		A7CC73271D088CE900F9876E /* PreferencesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesWindow.swift; path = ../PreferencesWindow.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				A7CC73251D0885A300F9876E /* StatusMenuController.swift */,
 				A7CC732B1D0A09FF00F9876E /* Constants.swift */,
 				A7CC732F1D0A1C9600F9876E /* OSManager.swift */,
+				A7316CBA1D66C3E5005BA5B2 /* Image.swift */,
 			);
 			path = DynoWall;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7316CBB1D66C3E5005BA5B2 /* Image.swift in Sources */,
 				A7CC732C1D0A09FF00F9876E /* Constants.swift in Sources */,
 				A7CC73291D088CE900F9876E /* PreferencesWindow.swift in Sources */,
 				A7CC73261D0885A300F9876E /* StatusMenuController.swift in Sources */,
