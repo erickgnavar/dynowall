@@ -12,7 +12,6 @@ protocol ImageProtocol: class {
     func imageDidUpdate(image: Image)
 }
 
-
 class StatusMenuController: NSObject, ImageProtocol {
 
     @IBOutlet weak var statusMenu: NSMenu!
@@ -37,6 +36,7 @@ class StatusMenuController: NSObject, ImageProtocol {
         statusItem.menu = statusMenu
         preferencesWindow = PreferencesWindow()
         self.loadSavedData()
+        OSManager.sharedInstance.delegate = self // assign instance of controller to update menu data
     }
 
     @IBAction func openImagePage(sender: NSMenuItem) {

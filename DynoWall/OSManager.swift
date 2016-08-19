@@ -13,6 +13,7 @@ import AppKit
 class OSManager: NSObject {
 
     static let sharedInstance = OSManager()
+    weak var delegate: ImageProtocol?
 
     var timer: NSTimer!
 
@@ -43,6 +44,7 @@ class OSManager: NSObject {
 
     func requestNewImage() {
         let api = UnsplashAPI()
+        api.delegate = delegate
         api.randomImage()
     }
 
