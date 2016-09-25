@@ -15,18 +15,18 @@ class OSManager: NSObject {
     static let sharedInstance = OSManager()
     weak var delegate: ImageProtocol?
 
-    var timer: NSTimer!
+    var timer: Timer!
 
-    override private init() {
+    override fileprivate init() {
         super.init()
-        if let interval = NSUserDefaults.standardUserDefaults().stringForKey(constants.keys.INTERVAL) {
+        if let interval = UserDefaults.standard.string(forKey: constants.keys.INTERVAL) {
             if Int(interval)! > 0 {
                 self.timer = self.createTimer(Int(interval)!)
             }
         }
     }
 
-    func setTimerInterval(interval: Int) {
+    func setTimerInterval(_ interval: Int) {
         // interval must be in minutes
         if (self.timer != nil) {
             self.timer.invalidate() // invalidate previous timer
@@ -37,9 +37,9 @@ class OSManager: NSObject {
         }
     }
 
-    private func createTimer(interval: Int) -> NSTimer {
+    fileprivate func createTimer(_ interval: Int) -> Timer {
         NSLog("New timer created")
-        return NSTimer.scheduledTimerWithTimeInterval(60 * Double(interval), target: self, selector: #selector(OSManager.requestNewImage), userInfo: nil, repeats: true)
+        return Timer.scheduledTimer(timeInterval: 60 * Double(interval), target: self, selector: #selector(OSManager.requestNewImage), userInfo: nil, repeats: true)
     }
 
     func requestNewImage() {
@@ -48,33 +48,33 @@ class OSManager: NSObject {
         api.randomImage()
     }
 
-    static func openUrl(url: String) {
-        NSWorkspace.sharedWorkspace().openURL(NSURL(string: url)!)
+    static func openUrl(_ url: String) {
+        NSWorkspace.shared().open(URL(string: url)!)
     }
 
-    static func setWallpaper(imageUrl: String, fileName: String) {
+    static func setWallpaper(_ imageUrl: String, fileName: String) {
         let imagesPath = "/tmp/images/"   
-        let sharedWorkspace = NSWorkspace.sharedWorkspace()
-        let mainScreen = NSScreen.mainScreen()
+        let sharedWorkspace = NSWorkspace.shared()
+        let mainScreen = NSScreen.main()
 
-        let fileManager = NSFileManager.defaultManager()
+        let fileManager = FileManager.default
 
-        try! fileManager.createDirectoryAtPath(imagesPath, withIntermediateDirectories: true, attributes: [:]) // try to create the image directory if not exists
+        try! fileManager.createDirectory(atPath: imagesPath, withIntermediateDirectories: true, attributes: [:]) // try to create the image directory if not exists
 
-        let session = NSURLSession.sharedSession()
-        let task = session.downloadTaskWithURL(NSURL(string: imageUrl)!) { location, response, err in
+        let session = URLSession.shared
+        let task = session.downloadTask(with: URL(string: imageUrl)!, completionHandler: { location, response, err in
             if let error = err {
                 NSLog("Download error: \(error)")
             }
             do {
                 let path = imagesPath + fileName
-                let destination = NSURL.fileURLWithPath(path)
-                try fileManager.moveItemAtURL(location!, toURL: destination)
-                try sharedWorkspace.setDesktopImageURL(NSURL.fileURLWithPath(path), forScreen: mainScreen!, options: [:])
+                let destination = URL(fileURLWithPath: path)
+                try fileManager.moveItem(at: location!, to: destination)
+                try sharedWorkspace.setDesktopImageURL(URL(fileURLWithPath: path), for: mainScreen!, options: [:])
             } catch(let error) {
                 NSLog("Error: \(error)")
             }
-        }
+        }) 
         task.resume()
     }
 

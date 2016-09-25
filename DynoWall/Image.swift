@@ -16,10 +16,10 @@ struct User {
         var data = [String: String]()
         data["url"] = url
         data["name"] = name
-        return data
+        return data as NSDictionary
     }
 
-    static func decode(data: NSDictionary) -> User {
+    static func decode(_ data: NSDictionary) -> User {
         return User(name: data["name"] as! String, url: data["url"] as! String)
     }
 }
@@ -30,12 +30,12 @@ struct Image {
 
     var dict: NSDictionary {
         var data = [String: AnyObject]()
-        data["url"] = url
+        data["url"] = url as AnyObject?
         data["user"] = user.dict
-        return data
+        return data as NSDictionary
     }
 
-    static func decode(data: NSDictionary) -> Image {
+    static func decode(_ data: NSDictionary) -> Image {
         let userData = data["user"] as! NSDictionary
         let user = User(name: userData["name"] as! String, url: userData["url"] as! String)
         return Image(url: data["url"] as! String, user: user)

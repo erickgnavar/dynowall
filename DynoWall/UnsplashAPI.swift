@@ -22,11 +22,11 @@ class UnsplashAPI: NSObject {
     weak var delegate: ImageProtocol?
 
     func randomImage() {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         var url = "/photos/random"
 
-        if let query = defaults.stringForKey("query") {
-            url.appendContentsOf("?query=\(query.componentsSeparatedByString(" ").joinWithSeparator("+"))")
+        if let query = defaults.string(forKey: "query") {
+            url.append("?query=\(query.components(separatedBy: " ").joined(separator: "+"))")
         }
         fetchImage(url)
     }
@@ -36,30 +36,30 @@ class UnsplashAPI: NSObject {
         OSManager.openUrl(url)
     }
 
-    private func fetchImage(resourceUrl: String) {
-        let session = NSURLSession.sharedSession()
-        let url = NSURL(string: BASE_API_URL + resourceUrl)
+    fileprivate func fetchImage(_ resourceUrl: String) {
+        let session = URLSession.shared
+        let url = URL(string: BASE_API_URL + resourceUrl)
 
         NSLog("Processing: \(url)")
 
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let accessToken = defaults.stringForKey(constants.keys.ACCESS_TOKEN) {
-            let request = NSMutableURLRequest(URL: url!)
-            request.HTTPMethod = "GET"
+        let defaults = UserDefaults.standard
+        if let accessToken = defaults.string(forKey: constants.keys.ACCESS_TOKEN) {
+            var request = URLRequest(url: url!)
+            request.httpMethod = "GET"
             request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
 
-            let task = session.dataTaskWithRequest(request, completionHandler: self.processResponse)
+            let task = session.dataTask(with: request, completionHandler: self.processResponse)
             task.resume()
         } else {
             // notify user
         }
     }
 
-    private func processResponse(data: NSData?, response: NSURLResponse?, err: NSError?) -> Void {
+    fileprivate func processResponse(_ data: Data?, response: URLResponse?, err: Error?) -> Void {
         if let error = err {
             NSLog("API error: \(error)")
         }
-        if let httpResponse = response as? NSHTTPURLResponse {
+        if let httpResponse = response as? HTTPURLResponse {
             switch httpResponse.statusCode {
             case 200:
                 let json : JSONDict = self.parseData(data!)
@@ -80,10 +80,10 @@ class UnsplashAPI: NSObject {
         }
     }
 
-    func requestToken(authorizationCode: String) {
-        let session = NSURLSession.sharedSession()
-        let url = NSURL(string: BASE_URL + "/oauth/token/")
-        let request = NSMutableURLRequest(URL: url!)
+    func requestToken(_ authorizationCode: String) {
+        let session = URLSession.shared
+        let url = URL(string: BASE_URL + "/oauth/token/")
+        var request = URLRequest(url: url!)
         let data = [
             "client_id": CLIENT_ID,
             "client_secret": CLIENT_SECRET,
@@ -91,43 +91,43 @@ class UnsplashAPI: NSObject {
             "code": authorizationCode,
             "grant_type": "authorization_code"
             ] as Dictionary<String, String>
-        request.HTTPMethod = "POST"
+        request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        try! request.HTTPBody = NSJSONSerialization.dataWithJSONObject(data, options: [])
-        let task = session.dataTaskWithRequest(request) { data, response, err in
+        try! request.httpBody = JSONSerialization.data(withJSONObject: data, options: [])
+        let task = session.dataTask(with: request, completionHandler: { data, response, err in
             let json : JSONDict = self.parseData(data!)
-            let defaults = NSUserDefaults.standardUserDefaults()
+            let defaults = UserDefaults.standard
             defaults.setValue(json["access_token"], forKey: constants.keys.ACCESS_TOKEN)
             defaults.setValue(json["refresh_token"], forKey: constants.keys.REFRESH_TOKEN)
-        }
+        }) 
         task.resume()
     }
 
     func refreshToken() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let session = NSURLSession.sharedSession()
-        let url = NSURL(string: BASE_URL + "/oauth/token/")
-        let request = NSMutableURLRequest(URL: url!)
+        let defaults = UserDefaults.standard
+        let session = URLSession.shared
+        let url = URL(string: BASE_URL + "/oauth/token/")
+        var request = URLRequest(url: url!)
         let data = [
             "client_id": CLIENT_ID,
             "client_secret": CLIENT_SECRET,
             "redirect_uri": REDIRECT_URI,
-            "refresh_token": defaults.stringForKey(constants.keys.REFRESH_TOKEN)!,
+            "refresh_token": defaults.string(forKey: constants.keys.REFRESH_TOKEN)!,
             "grant_type": "refresh_token"
             ] as Dictionary<String, String>
-        request.HTTPMethod = "POST"
+        request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        try! request.HTTPBody = NSJSONSerialization.dataWithJSONObject(data, options: [])
-        let task = session.dataTaskWithRequest(request) { data, response, err in
+        try! request.httpBody = JSONSerialization.data(withJSONObject: data, options: [])
+        let task = session.dataTask(with: request, completionHandler: { data, response, err in
             let json : JSONDict = self.parseData(data!)
             defaults.setValue(json["access_token"], forKey: constants.keys.ACCESS_TOKEN)
             defaults.setValue(json["refresh_token"], forKey: constants.keys.REFRESH_TOKEN)
-        }
+        }) 
         task.resume()
     }
 
-    private func parseData(data: NSData) -> JSONDict {
-        let json : JSONDict = try! NSJSONSerialization.JSONObjectWithData(data, options: []) as! JSONDict
+    fileprivate func parseData(_ data: Data) -> JSONDict {
+        let json : JSONDict = try! JSONSerialization.jsonObject(with: data, options: []) as! JSONDict
         return json
     }
     

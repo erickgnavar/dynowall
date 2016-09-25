@@ -14,7 +14,7 @@ class PreferencesWindow: NSWindowController {
     @IBOutlet weak var searchQueryTextField: NSTextField!
     @IBOutlet weak var statusTextField: NSTextField!
 
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = UserDefaults.standard
 
     let api = UnsplashAPI()
 
@@ -29,24 +29,24 @@ class PreferencesWindow: NSWindowController {
 
         self.window?.center()
         self.window?.makeKeyAndOrderFront(nil)
-        NSApp.activateIgnoringOtherApps(true)
+        NSApp.activate(ignoringOtherApps: true)
 
         self.checkStatus()
         self.loadSavedData()
     }
     
-    @IBAction func authorizeClicked(sender: NSButton) {
+    @IBAction func authorizeClicked(_ sender: NSButton) {
         let alert = NSAlert()
         alert.messageText = "A web page will be open to generate an authorization code, please copy that code and come back to complete the setup"
-        alert.addButtonWithTitle("Continue")
-        alert.addButtonWithTitle("Cancel")
+        alert.addButton(withTitle: "Continue")
+        alert.addButton(withTitle: "Cancel")
         let response = alert.runModal()
         if response == NSAlertFirstButtonReturn {
             api.authorize()
         }
     }
 
-    @IBAction func requestTokenClicked(sender: NSButton) {
+    @IBAction func requestTokenClicked(_ sender: NSButton) {
         if authorizationCodeTextField.stringValue.characters.count > 0 {
             api.requestToken(authorizationCodeTextField.stringValue)
         } else {
@@ -56,12 +56,12 @@ class PreferencesWindow: NSWindowController {
         }
     }
 
-    @IBAction func searchQueryChanged(sender: NSTextField) {
+    @IBAction func searchQueryChanged(_ sender: NSTextField) {
         defaults.setValue(searchQueryTextField.stringValue, forKey: constants.keys.QUERY)
     }
 
     func checkStatus() {
-        if let accessToken = defaults.stringForKey(constants.keys.ACCESS_TOKEN) {
+        if let accessToken = defaults.string(forKey: constants.keys.ACCESS_TOKEN) {
             if accessToken.characters.count != 0 {
                 status = true
             }
@@ -78,7 +78,7 @@ class PreferencesWindow: NSWindowController {
     }
 
     func loadSavedData() {
-        if let query = defaults.stringForKey(constants.keys.QUERY) {
+        if let query = defaults.string(forKey: constants.keys.QUERY) {
             searchQueryTextField.stringValue = query
         }
     }

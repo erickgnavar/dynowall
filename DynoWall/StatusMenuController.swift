@@ -9,7 +9,7 @@
 import Cocoa
 
 protocol ImageProtocol: class {
-    func imageDidUpdate(image: Image)
+    func imageDidUpdate(_ image: Image)
 }
 
 class StatusMenuController: NSObject, ImageProtocol {
@@ -23,15 +23,15 @@ class StatusMenuController: NSObject, ImageProtocol {
     @IBOutlet weak var every12HoursMenuItem: NSMenuItem!
     @IBOutlet weak var imageDetails: NSMenuItem!
 
-    let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     var preferencesWindow: PreferencesWindow!
 
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = UserDefaults.standard
     let api = UnsplashAPI()
 
     override func awakeFromNib() {
         let icon = NSImage(named: "statusIcon")
-        icon?.template = true
+        icon?.isTemplate = true
         statusItem.image = icon
         statusItem.menu = statusMenu
         preferencesWindow = PreferencesWindow()
@@ -39,17 +39,17 @@ class StatusMenuController: NSObject, ImageProtocol {
         OSManager.sharedInstance.delegate = self // assign instance of controller to update menu data
     }
 
-    @IBAction func openImagePage(sender: NSMenuItem) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let data = defaults.valueForKey(constants.keys.IMAGE) {
+    @IBAction func openImagePage(_ sender: NSMenuItem) {
+        let defaults = UserDefaults.standard
+        if let data = defaults.value(forKey: constants.keys.IMAGE) {
             let image = Image.decode(data as! NSDictionary)
             OSManager.openUrl(image.url)
         } else {
             NSLog("No image saved")
         }
     }
-    @IBAction func openAuthorProfilePage(sender: NSMenuItem) {
-        if let data = defaults.valueForKey(constants.keys.IMAGE) {
+    @IBAction func openAuthorProfilePage(_ sender: NSMenuItem) {
+        if let data = defaults.value(forKey: constants.keys.IMAGE) {
             let image = Image.decode(data as! NSDictionary)
             OSManager.openUrl(image.user.url)
         } else {
@@ -57,27 +57,27 @@ class StatusMenuController: NSObject, ImageProtocol {
         }
     }
 
-    @IBAction func changeWallpaperClicked(sender: NSMenuItem) {
+    @IBAction func changeWallpaperClicked(_ sender: NSMenuItem) {
         api.delegate = self
         api.randomImage()
     }
 
-    @IBAction func intervalClicked(sender: NSMenuItem) {
+    @IBAction func intervalClicked(_ sender: NSMenuItem) {
         disableAllIntervalItems()
         toggleIntervalMenuItem(sender)
     }
 
-    @IBAction func preferencesClicked(sender: NSMenuItem) {
+    @IBAction func preferencesClicked(_ sender: NSMenuItem) {
         preferencesWindow.showWindow(nil)
-        NSApp.activateIgnoringOtherApps(true)
+        NSApp.activate(ignoringOtherApps: true)
     }
 
-    @IBAction func quitClicked(sender: NSMenuItem) {
-        NSApplication.sharedApplication().terminate(self)
+    @IBAction func quitClicked(_ sender: NSMenuItem) {
+        NSApplication.shared().terminate(self)
     }
 
-    func imageDidUpdate(image: Image) {
-        let defaults = NSUserDefaults.standardUserDefaults()
+    func imageDidUpdate(_ image: Image) {
+        let defaults = UserDefaults.standard
         // is not possible save directly a struct in user preferences
         defaults.setValue(image.dict, forKey: constants.keys.IMAGE)
         imageDetails.title = "Photo by \(image.user.name)"
@@ -85,7 +85,7 @@ class StatusMenuController: NSObject, ImageProtocol {
 
     func loadSavedData() {
         // Setup interval from user preferences
-        if let interval = defaults.stringForKey(constants.keys.INTERVAL) {
+        if let interval = defaults.string(forKey: constants.keys.INTERVAL) {
             disableAllIntervalItems()
             switch Int(interval)! {
             case 0:
@@ -102,21 +102,21 @@ class StatusMenuController: NSObject, ImageProtocol {
                 NSLog("Value not considered")
             }
         } else {
-            defaults.setInteger(constants.INTERVAL, forKey: constants.keys.INTERVAL)
+            defaults.set(constants.INTERVAL, forKey: constants.keys.INTERVAL)
         }
         // Setup photo data from user preferences
-        if let data = defaults.valueForKey(constants.keys.IMAGE) {
+        if let data = defaults.value(forKey: constants.keys.IMAGE) {
             let image = Image.decode(data as! NSDictionary)
             imageDetails.title = "Photo by \(image.user.name)"
-            imageDetails.hidden = false
+            imageDetails.isHidden = false
         } else {
             // Hide menu item if no exists image data saved in user preferences
-            imageDetails.hidden = true
+            imageDetails.isHidden = true
             NSLog("No image saved")
         }
     }
 
-    private func disableAllIntervalItems() {
+    fileprivate func disableAllIntervalItems() {
         neverMenuItem.state = 0
         everyHourMenuItem.state = 0
         every3HoursMenuItem.state = 0
@@ -124,7 +124,7 @@ class StatusMenuController: NSObject, ImageProtocol {
         every12HoursMenuItem.state = 0
     }
 
-    private func toggleIntervalMenuItem(item: NSMenuItem) {
+    fileprivate func toggleIntervalMenuItem(_ item: NSMenuItem) {
         // use tag value as minutes quantity
         if item.state == 0 {
             item.state = 1
@@ -132,7 +132,7 @@ class StatusMenuController: NSObject, ImageProtocol {
         } else {
             item.state = 0
         }
-        defaults.setInteger(item.tag, forKey: constants.keys.INTERVAL)
+        defaults.set(item.tag, forKey: constants.keys.INTERVAL)
     }
 
 }
