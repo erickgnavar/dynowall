@@ -13,6 +13,7 @@ class PreferencesWindow: NSWindowController {
     @IBOutlet weak var authorizationCodeTextField: NSTextField!
     @IBOutlet weak var searchQueryTextField: NSTextField!
     @IBOutlet weak var statusTextField: NSTextField!
+    @IBOutlet weak var currentFolderTextField: NSTextField!
 
     let defaults = UserDefaults.standard
 
@@ -60,6 +61,20 @@ class PreferencesWindow: NSWindowController {
         defaults.setValue(searchQueryTextField.stringValue, forKey: constants.keys.QUERY)
     }
 
+    @IBAction func chooseFolderClicked(_ sender: NSButton) {
+        let panel = NSOpenPanel();
+        panel.canChooseFiles = false;
+        panel.canChooseDirectories = true;
+        panel.canCreateDirectories = true;
+        panel.begin { (result) in
+            if result == NSFileHandlingPanelOKButton {
+                let path = panel.url?.path;
+                UserDefaults.standard.set(path, forKey: constants.keys.FOLDER_PATH);
+                self.currentFolderTextField.stringValue = path!
+            }
+        }
+    }
+
     func checkStatus() {
         if let accessToken = defaults.string(forKey: constants.keys.ACCESS_TOKEN) {
             if accessToken.characters.count != 0 {
@@ -80,6 +95,9 @@ class PreferencesWindow: NSWindowController {
     func loadSavedData() {
         if let query = defaults.string(forKey: constants.keys.QUERY) {
             searchQueryTextField.stringValue = query
+        }
+        if let path = defaults.string(forKey: constants.keys.FOLDER_PATH) {
+            currentFolderTextField.stringValue = path
         }
     }
 }

@@ -53,7 +53,12 @@ class OSManager: NSObject {
     }
 
     static func setWallpaper(_ imageUrl: String, fileName: String) {
-        let imagesPath = "/tmp/images/"   
+        var imagesPath = "/tmp/images/"
+
+        if let path = UserDefaults.standard.string(forKey: constants.keys.FOLDER_PATH) {
+            imagesPath = path + "/"
+        }
+
         let sharedWorkspace = NSWorkspace.shared()
         let mainScreen = NSScreen.main()
 

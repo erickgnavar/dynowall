@@ -11,4 +11,4 @@ Change OSX wallpaper with a random high quality picture from Unsplash
 # TODO
 - [ ] Add start at login support
 - [ ] Improve intervals schedule
-- [ ] Select folder where put downloaded images
+- [X] Select folder where put downloaded images

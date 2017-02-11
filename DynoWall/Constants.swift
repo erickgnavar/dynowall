@@ -17,6 +17,7 @@ struct constants {
         static let USE_SEARCH = "use_search"
         static let INTERVAL = "interval"
         static let IMAGE = "image"
+        static let FOLDER_PATH = "folder_path"
     }
     static let INTERVAL = 0 // no update
 }
