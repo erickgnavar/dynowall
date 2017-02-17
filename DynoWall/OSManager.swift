@@ -60,7 +60,6 @@ class OSManager: NSObject {
         }
 
         let sharedWorkspace = NSWorkspace.shared()
-        let mainScreen = NSScreen.main()
 
         let fileManager = FileManager.default
 
@@ -75,7 +74,9 @@ class OSManager: NSObject {
                 let path = imagesPath + fileName
                 let destination = URL(fileURLWithPath: path)
                 try fileManager.moveItem(at: location!, to: destination)
-                try sharedWorkspace.setDesktopImageURL(URL(fileURLWithPath: path), for: mainScreen!, options: [:])
+                for screen in NSScreen.screens()! {
+                    try sharedWorkspace.setDesktopImageURL(URL(fileURLWithPath: path), for: screen, options: [:])
+                }
             } catch(let error) {
                 NSLog("Error: \(error)")
             }
