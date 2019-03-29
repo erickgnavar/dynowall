@@ -42,13 +42,13 @@ class PreferencesWindow: NSWindowController {
         alert.addButton(withTitle: "Continue")
         alert.addButton(withTitle: "Cancel")
         let response = alert.runModal()
-        if response == NSAlertFirstButtonReturn {
+        if response == NSApplication.ModalResponse.alertFirstButtonReturn {
             api.authorize()
         }
     }
 
     @IBAction func requestTokenClicked(_ sender: NSButton) {
-        if authorizationCodeTextField.stringValue.characters.count > 0 {
+        if authorizationCodeTextField.stringValue.count > 0 {
             api.requestToken(authorizationCodeTextField.stringValue)
         } else {
             let alert = NSAlert()
@@ -67,7 +67,7 @@ class PreferencesWindow: NSWindowController {
         panel.canChooseDirectories = true;
         panel.canCreateDirectories = true;
         panel.begin { (result) in
-            if result == NSFileHandlingPanelOKButton {
+            if result.rawValue == NSFileHandlingPanelOKButton {
                 let path = panel.url?.path;
                 UserDefaults.standard.set(path, forKey: constants.keys.FOLDER_PATH);
                 self.currentFolderTextField.stringValue = path!
@@ -77,7 +77,7 @@ class PreferencesWindow: NSWindowController {
 
     func checkStatus() {
         if let accessToken = defaults.string(forKey: constants.keys.ACCESS_TOKEN) {
-            if accessToken.characters.count != 0 {
+            if accessToken.count != 0 {
                 status = true
             }
         }

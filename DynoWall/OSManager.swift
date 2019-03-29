@@ -42,14 +42,14 @@ class OSManager: NSObject {
         return Timer.scheduledTimer(timeInterval: 60 * Double(interval), target: self, selector: #selector(OSManager.requestNewImage), userInfo: nil, repeats: true)
     }
 
-    func requestNewImage() {
+    @objc func requestNewImage() {
         let api = UnsplashAPI()
         api.delegate = delegate
         api.randomImage()
     }
 
     static func openUrl(_ url: String) {
-        NSWorkspace.shared().open(URL(string: url)!)
+        NSWorkspace.shared.open(URL(string: url)!)
     }
 
     static func setWallpaper(_ imageUrl: String, fileName: String) {
@@ -59,7 +59,7 @@ class OSManager: NSObject {
             imagesPath = path + "/"
         }
 
-        let sharedWorkspace = NSWorkspace.shared()
+        let sharedWorkspace = NSWorkspace.shared
 
         let fileManager = FileManager.default
 
@@ -74,7 +74,7 @@ class OSManager: NSObject {
                 let path = imagesPath + fileName
                 let destination = URL(fileURLWithPath: path)
                 try fileManager.moveItem(at: location!, to: destination)
-                for screen in NSScreen.screens()! {
+                for screen in NSScreen.screens {
                     try sharedWorkspace.setDesktopImageURL(URL(fileURLWithPath: path), for: screen, options: [:])
                 }
             } catch(let error) {

@@ -23,7 +23,7 @@ class StatusMenuController: NSObject, ImageProtocol {
     @IBOutlet weak var every12HoursMenuItem: NSMenuItem!
     @IBOutlet weak var imageDetails: NSMenuItem!
 
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var preferencesWindow: PreferencesWindow!
 
     let defaults = UserDefaults.standard
@@ -73,7 +73,7 @@ class StatusMenuController: NSObject, ImageProtocol {
     }
 
     @IBAction func quitClicked(_ sender: NSMenuItem) {
-        NSApplication.shared().terminate(self)
+        NSApplication.shared.terminate(self)
     }
 
     func imageDidUpdate(_ image: Image) {
@@ -89,15 +89,15 @@ class StatusMenuController: NSObject, ImageProtocol {
             disableAllIntervalItems()
             switch Int(interval)! {
             case 0:
-                neverMenuItem.state = 1
+                neverMenuItem.state = NSControl.StateValue(rawValue: 1)
             case 60:
-                everyHourMenuItem.state = 1
+                everyHourMenuItem.state = NSControl.StateValue(rawValue: 1)
             case 60 * 3:
-                every3HoursMenuItem.state = 1
+                every3HoursMenuItem.state = NSControl.StateValue(rawValue: 1)
             case 60 * 6:
-                every6HoursMenuItem.state = 1
+                every6HoursMenuItem.state = NSControl.StateValue(rawValue: 1)
             case 60 * 12:
-                every12HoursMenuItem.state = 1
+                every12HoursMenuItem.state = NSControl.StateValue(rawValue: 1)
             default:
                 NSLog("Value not considered")
             }
@@ -117,20 +117,20 @@ class StatusMenuController: NSObject, ImageProtocol {
     }
 
     fileprivate func disableAllIntervalItems() {
-        neverMenuItem.state = 0
-        everyHourMenuItem.state = 0
-        every3HoursMenuItem.state = 0
-        every6HoursMenuItem.state = 0
-        every12HoursMenuItem.state = 0
+        neverMenuItem.state = NSControl.StateValue(rawValue: 0)
+        everyHourMenuItem.state = NSControl.StateValue(rawValue: 0)
+        every3HoursMenuItem.state = NSControl.StateValue(rawValue: 0)
+        every6HoursMenuItem.state = NSControl.StateValue(rawValue: 0)
+        every12HoursMenuItem.state = NSControl.StateValue(rawValue: 0)
     }
 
     fileprivate func toggleIntervalMenuItem(_ item: NSMenuItem) {
         // use tag value as minutes quantity
-        if item.state == 0 {
-            item.state = 1
+        if item.state.rawValue == 0 {
+            item.state = NSControl.StateValue(rawValue: 1)
             OSManager.sharedInstance.setTimerInterval(item.tag)
         } else {
-            item.state = 0
+            item.state = NSControl.StateValue(rawValue: 0)
         }
         defaults.set(item.tag, forKey: constants.keys.INTERVAL)
     }

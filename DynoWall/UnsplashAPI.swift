@@ -40,7 +40,7 @@ class UnsplashAPI: NSObject {
         let session = URLSession.shared
         let url = URL(string: BASE_API_URL + resourceUrl)
 
-        NSLog("Processing: \(url)")
+        NSLog("Processing: \(String(describing: url))")
 
         let defaults = UserDefaults.standard
         if let accessToken = defaults.string(forKey: constants.keys.ACCESS_TOKEN) {
