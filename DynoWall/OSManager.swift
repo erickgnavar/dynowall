@@ -73,7 +73,11 @@ class OSManager: NSObject {
             do {
                 let path = imagesPath + fileName
                 let destination = URL(fileURLWithPath: path)
-                try fileManager.moveItem(at: location!, to: destination)
+                if !fileManager.fileExists(atPath: path) {
+                    // becasue the image provided by Unsplash is a random image it's possible a duplicate
+                    // only move the file if the image doesn't exist in the destination folder
+                    try fileManager.moveItem(at: location!, to: destination)
+                }
                 for screen in NSScreen.screens {
                     try sharedWorkspace.setDesktopImageURL(URL(fileURLWithPath: path), for: screen, options: [:])
                 }
